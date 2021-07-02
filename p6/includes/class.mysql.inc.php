@@ -16,7 +16,7 @@ class class_mysql
 		$this->MySQL_user = MYSQL_USER;
 		$this->MySQL_passwd = MYSQL_PASSWD;
 		$this->MySQL_dbname = MYSQL_DBNAME;
-		$this->MYSQL_debug = MYSQL_DEBUG;
+		// $this->MYSQL_debug = MYSQL_DEBUG;
 		// Creates a connection to the database
 		$this->connection = $this->connect();
 	}
