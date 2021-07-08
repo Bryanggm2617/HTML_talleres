@@ -1,5 +1,5 @@
 <?php
-	define("DIR_RAIZ", $_SERVER['DOCUMENT_ROOT'] . "p6");
+	define("DIR_RAIZ", $_SERVER['DOCUMENT_ROOT'] . "/site1/p6");
 	define("DIR_INC", DIR_RAIZ . "/includes/");
 	define("HOST", "http://" . $_SERVER['HTTP_HOST']);
 	define("DIR_IMG", HOST . "/images/");

@@ -25,7 +25,7 @@ class class_mysql
 	{
 		$result = false;
 		$connection = new  mysqli($this->MySQL_host, $this->MySQL_user, $this->MySQL_passwd, $this->MySQL_dbname);
-		if (!connection) {
+		if (!$connection) {
 			$error_msg = "<center><h2>FALLO AL CONECTAR A LA BASE DE DATOS.<BR>informe al administrador del sitio<br>";
 			$error_msg .= "Error: " . mysqli_error($connection) . "<h2></center>";
 			$this->send_error_msg($error_msg);
@@ -42,9 +42,11 @@ class class_mysql
 
 	function query($sentence)
 	{
+		
 		$result = false;
 		if ($this->connection) {
 			$result = $this->connection->query($sentence);
+			
 			if (!$result) {
 				$error_msg = "<center><h3>Fallo al ejecutar la sentencia<h3><h4>$sentence<br>";
 				$error_msg .= "Error: " . mysqli_error($this->connection) . "<h2></center>";
@@ -59,7 +61,15 @@ class class_mysql
 	{
 		$bd = new class_mysql();
 		$sql = "INSERT INTO sensores1 (id, temperatura, voltaje, humedad) VALUES (NULL, '" . $t . "', '" . $v . "', '" . $h . "');";
+		echo $sql;
 		return $bd->query($sql);
 	}
+	function listar()
+	{
+		$bd = new class_mysql();
+		$sql = "SELECT  * FROM sensores1;";
+		return $bd->query($sql);
+	}
+
+
 } // closes the class definition
-?>
