@@ -22,6 +22,7 @@ $bd1 = $bd->listar();
 </head>
 
 <body>
+
     <div>
         <table>
             <tr>
@@ -33,15 +34,28 @@ $bd1 = $bd->listar();
             <?php
             while ($row = mysqli_fetch_array($bd1)) {
             ?>
-                <tr>
-                    <td><?php echo $row['id']; ?> </td>
-                    <td><?php echo $row['temperatura']; ?></td>
-                    <td><?php echo $row['voltaje']; ?></td>
-                    <td><?php echo $row['humedad']; ?></td>
-                </tr>
+            <tr>
+                <td><?php echo $row['id']; ?> </td>
+                <td><?php echo $row['temperatura']; ?></td>
+                <td><?php echo $row['voltaje']; ?></td>
+                <td><?php echo $row['humedad']; ?></td>
+            </tr>
             <?php } ?>
+            <tr>
+                <td>
+                    <form action="<?php $bd->Limpiar();?>"  >
+
+                    <button type="subit" >Borrar </button>
+                    </form>
+                </td>
+                
+                <td> 
+                    <button type="subit">Actualizar </button>
+                </td>
+            </tr>
         </table>
     </div>
+
 </body>
 
 </html>

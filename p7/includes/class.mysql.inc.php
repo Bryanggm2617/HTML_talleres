@@ -61,7 +61,6 @@ class class_mysql
 	{
 		$bd = new class_mysql();
 		$sql = "INSERT INTO sensores2 (id, temperatura, voltaje, humedad) VALUES (NULL, '" . $t . "', '" . $v . "', '" . $h . "');";
-		echo $sql;
 		return $bd->query($sql);
 	}
 	function listar()
@@ -70,6 +69,11 @@ class class_mysql
 		$sql = "SELECT  * FROM sensores2;";
 		return $bd->query($sql);
 	}
-
+	function Limpiar()
+	{
+		$bd = new class_mysql();
+		$sql = "TRUNCATE sensores2;";
+		return $bd->query($sql);
+	}
 
 } // closes the class definition

@@ -70,6 +70,12 @@ class class_mysql
 		$sql = "SELECT  * FROM sensores1;";
 		return $bd->query($sql);
 	}
+	function Limpiar()
+	{
+		$bd = new class_mysql();
+		$sql = "TRUNCATE sensores1;";
+		return $bd->query($sql);
+	}
 
 
 } // closes the class definition
