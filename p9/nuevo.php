@@ -1,16 +1,3 @@
-<?php
-// echo "<h2>1</h2><br>";
-include_once($_SERVER['DOCUMENT_ROOT'] . "/site1/p7" . "/config.inc.php");
-// echo "<h2>2</h2><br>";
-include_once(DIR_INC . "class.mysql.inc.php");
-// echo "<h2>3</h2><br>";
-$bd = new class_mysql();
-//echo "<h2>4</h2><br>";
-$bd->insertar($_POST['temp'], $_POST['volt'], $_POST['hum']);
-// echo "<h2>Listo</h2><br>";
-$bd1 = $bd->listar();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,10 +9,11 @@ $bd1 = $bd->listar();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../static/css/main.css">
-    <title>Metodo POST</title>
+    <title>Document</title>
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="../index.html" style="font-Size:30px">Comunicaciones</br>Avanzadas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,33 +55,44 @@ $bd1 = $bd->listar();
 
         <div class="jumbotron" id="opac1">
             <center>
-                <div>
 
-                    <h3> Método POST </h3>
-                    <table border="3">
+                <?php
+                echo "<h3>TABLA DINÁMICA </h3>";
+                ?>
+
+                <div>
+                    <form action="spinsertar.php" method="post">
 
                         <tr>
-                            <td>id</td>
-                            <td>Temperatura</td>
-                            <td>Voltaje</td>
-                            <td>Humedad</td>
+                            <td>Ingresar Datos</td>
                         </tr>
 
+                        <table border="4">
 
-                        <?php
-                        while ($row = mysqli_fetch_array($bd1)) {
-                        ?>
+
                             <tr>
-                                <td><?php echo $row['id']; ?> </td>
-                                <td><?php echo $row['temperatura']; ?></td>
-                                <td><?php echo $row['voltaje']; ?></td>
-                                <td><?php echo $row['humedad']; ?></td>
+                                <td>Temperatura:</td>
+                                <td><input type="text" name="tem" id=""></td>
                             </tr>
-                        <?php } ?>
-                    </table>
+                            <tr>
+                                <td>Voltaje:</td>
+                                <td><input type="text" name="volt" id=""></td>
+                            </tr>
+                            <tr>
+                                <td>Humedad:</td>
+                                <td><input type="text" name="hum" id=""></td>
+                            </tr>
+
+                        </table>
+
+                        <tr>
+                            <td><input type="submit" class="btn btn-outline-primary" value="Guardar"></td>
+                        </tr>
+
+                    </form>
+
                 </div>
             </center>
-
         </div>
 
 

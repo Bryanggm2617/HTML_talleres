@@ -1,0 +1,18 @@
+body {
+  --colorf1: #301c1c; /*#1F1C18  #301c1c*/
+  --colorf2: #8E0E00;
+  background: #8E0E00;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, var(--colorf1), var(--colorf2));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, var(--colorf1), var(--colorf2)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /*background: #EB5757;  /* fallback for old browsers */
+  /*background: -webkit-linear-gradient(to left, #EB5757 , #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  /*background: linear-gradient(to left, #EB5757 , #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#opac1{
+  --color1: rgba(255, 170, 170,0.5);
+  --color2: rgba(46, 18, 18, 0.5);
+  background: var(--color1);  
+  background: -webkit-linear-gradient(to left, var(--color1), var(--color2));  
+  background: linear-gradient(to left, var(--color1), var(--color2)); 
+  color: rgba(255, 255, 255,0.9);
+}

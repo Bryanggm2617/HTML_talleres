@@ -61,7 +61,7 @@ class class_mysql
 	{
 		$bd = new class_mysql();
 		$sql = "INSERT INTO sensores1 (id, temperatura, voltaje, humedad) VALUES (NULL, '" . $t . "', '" . $v . "', '" . $h . "');";
-		echo $sql;
+		// echo $sql;
 		return $bd->query($sql);
 	}
 	function listar()

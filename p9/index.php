@@ -1,16 +1,3 @@
-<?php
-// echo "<h2>1</h2><br>";
-include_once($_SERVER['DOCUMENT_ROOT'] . "/site1/p7" . "/config.inc.php");
-// echo "<h2>2</h2><br>";
-include_once(DIR_INC . "class.mysql.inc.php");
-// echo "<h2>3</h2><br>";
-$bd = new class_mysql();
-//echo "<h2>4</h2><br>";
-$bd->insertar($_POST['temp'], $_POST['volt'], $_POST['hum']);
-// echo "<h2>Listo</h2><br>";
-$bd1 = $bd->listar();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,11 +5,11 @@ $bd1 = $bd->listar();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <!-- BOOTSTRAP 4 CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../static/css/main.css">
-    <title>Metodo POST</title>
 </head>
 
 <body>
@@ -67,32 +54,55 @@ $bd1 = $bd->listar();
 
         <div class="jumbotron" id="opac1">
             <center>
+                <?php
+                echo "<h3>Tabla Dinámica</h3>";
+                ?>
+                <br>
                 <div>
+                <a href="nuevo.php"><button type="button" class="btn btn-outline-primary">Ingresar Datos</button></a>
 
-                    <h3> Método POST </h3>
-                    <table border="3">
-
+                </div>
+                <br>
+                <div>
+                    <table border="4">
                         <tr>
-                            <td>id</td>
-                            <td>Temperatura</td>
-                            <td>Voltaje</td>
-                            <td>Humedad</td>
+                            <td>Id</td>
+                            <td>Temperatura (°C)</td>
+                            <td>Voltaje (V)</td>
+                            <td>Humedad (%)</td>
+                            <td>Opciones</td>
+
                         </tr>
-
-
                         <?php
-                        while ($row = mysqli_fetch_array($bd1)) {
+                        $cnx = mysqli_connect("localhost", "user1", "toortoor", "practicas");
+                        $sql = "SELECT Id, Temperatura, Voltaje, Humedad FROM sensores3 order by Id desc";
+                        $rta = mysqli_query($cnx, $sql);
+                        while ($mostrar = mysqli_fetch_row($rta)) {
                         ?>
                             <tr>
-                                <td><?php echo $row['id']; ?> </td>
-                                <td><?php echo $row['temperatura']; ?></td>
-                                <td><?php echo $row['voltaje']; ?></td>
-                                <td><?php echo $row['humedad']; ?></td>
+                                <td><?php echo $mostrar['0'] ?></td>
+                                <td><?php echo $mostrar['1'] ?></td>
+                                <td><?php echo $mostrar['2'] ?></td>
+                                <td><?php echo $mostrar['3'] ?></td>
+                                <td>
+                                    <a href="editar.php?
+                            id=<?php echo $mostrar['0'] ?> &
+                            tem=<?php echo $mostrar['1'] ?> &
+                            volt=<?php echo $mostrar['2'] ?> &
+                            hum=<?php echo $mostrar['3'] ?>
+                            "><button type="button" class="btn btn-outline-primary">Editar</button></a>
+                                    <a href="speliminar.php? id=<?php echo $mostrar['0'] ?>">
+                                    <button type="button" class="btn btn-outline-primary">Eliminar</button></a>
+
+
                             </tr>
-                        <?php } ?>
+                        <?php
+                        }
+                        ?>
                     </table>
                 </div>
             </center>
+
 
         </div>
 
